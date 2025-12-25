@@ -1,0 +1,53 @@
+#player {
+  text-align: center;
+}
+
+#player h2 {
+  color: #fafaff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px #6247ea33;
+  margin-bottom: 1.1rem;
+}
+
+#player p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#player input {
+  font: inherit;
+  border: 1px solid #6247ea;
+  background: rgba(54, 71, 120, 0.82);
+  border-radius: 6px;
+  padding: 0.32rem 0.7rem;
+  color: #f3f6fb;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#player input:focus {
+  border-color: #32d3fa;
+  background: rgba(98, 71, 234, 0.18);
+}
+
+#player button {
+  cursor: pointer;
+  background: linear-gradient(90deg, #32d3fa 0%, #6247ea 100%);
+  border: 1px solid #32d3fa;
+  padding: 0.4rem 1.2rem;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background 0.2s, border-color 0.2s;
+  margin-left: 4px;
+  box-shadow: 0 2px 8px #32d3fa11;
+}
+
+#player button:hover {
+  background: linear-gradient(90deg, #6247ea 0%, #32d3fa 100%);
+  border-color: #6247ea;
+}

@@ -1,0 +1,23 @@
+h1 {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 20px #6247ea44, 0 1px 4px #151a2b99;
+  font-size: 2.2rem;
+  margin: 0 0 0.25em 0;
+  letter-spacing: 0.07em;
+}
+h1 em {
+  font-style: normal;
+  color: #32d3fa;
+  text-shadow: 0 0 12px #32d3fa88, 0 0 1px #fff;
+}
+p {
+  font-size: 1.1rem;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  color: #bdb6e7;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}

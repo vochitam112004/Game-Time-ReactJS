@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Montserrat:wght@700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(120deg, #232946 0%, #6247ea 80%, #5f2eea 100%);
+  color: #f3f6fb;
+  min-height: 100vh;
+}
+
+#content {
+  max-width: 48rem;
+  margin: 3.5rem auto 0;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: rgba(27, 28, 44, 0.88);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(44, 37, 110, 0.22),
+    0 1.5px 8px 0 rgba(98, 71, 234, 0.08);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+#challenges {
+  max-width: 40rem;
+  margin: 3rem auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.result-modal {
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #32285c;
+  box-shadow: 0 2px 20px #6247ea22;
+}
+
+.result-modal[open] {
+  animation: slide-in-from-top 0.35s ease-out;
+}
+
+.result-modal::backdrop {
+  background: rgba(38, 34, 71, 0.95);
+}
+
+.result-modal h2 {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 0 0.25rem 0;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  color: #6247ea;
+  letter-spacing: 0.04em;
+}
+
+.result-modal progress {
+  width: 100%;
+  height: 1.5rem;
+  margin: 0;
+  accent-color: #32d3fa;
+}
+
+.result-modal p {
+  margin: 0.5rem 0;
+  font-size: 1.09rem;
+}
+
+.result-modal p strong {
+  color: #6247ea;
+}
+
+.result-modal form {
+  text-align: right;
+}
+
+.result-modal button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #32d3fa 0%, #6247ea 100%);
+  color: #fff;
+  font-size: 1.08rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #32d3fa22;
+  transition: background 0.2s;
+}
+
+.result-modal button:hover {
+  background: linear-gradient(90deg, #6247ea 0%, #32d3fa 100%);
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateY(-15%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
