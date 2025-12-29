@@ -1,8 +1,21 @@
 import "./ResultModel.css";
+import { useRef, useImperativeHandle } from "react";
 export default function ResultModel({ result, timeTarget, ref }) {
+  const dialogInSide = useRef();
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        open() {
+          dialogInSide.current.showModal();
+        },
+      };
+    },
+    []
+  );
   return (
     <>
-      <dialog ref={ref} className="result-modal">
+      <dialog ref={dialogInSide} className="result-modal">
         <p>You {result}</p>
         <p>
           Thời gian đích :{" "}

@@ -13,7 +13,7 @@ export default function TimeStopper({ title, targetTime }) {
     setHasStarted(true); // đã bắt đầu chơi
     timer.current = setTimeout(() => {
       // setTimeExpired(true);
-      dialog.current.showModal();
+      dialog.current.open();
     }, targetTime * 1000);
     setTimeStart(true);
   }
