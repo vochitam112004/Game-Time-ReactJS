@@ -1,7 +1,9 @@
 import "./TimeStopper.css";
 import { useState, useRef } from "react";
+import ResultModel from "../ResultModel/ResultModel.jsx";
 export default function TimeStopper({ title, targetTime }) {
   const timer = useRef();
+  const dialog = useRef();
   const [timeStart, setTimeStart] = useState(false);
   const [timeExpired, setTimeExpired] = useState(false);
   const [hasStarted, setHasStarted] = useState(false); // kiểm tra đã bắt đầu
@@ -10,7 +12,8 @@ export default function TimeStopper({ title, targetTime }) {
   function handleStart() {
     setHasStarted(true); // đã bắt đầu chơi
     timer.current = setTimeout(() => {
-      setTimeExpired(true);
+      // setTimeExpired(true);
+      dialog.current.showModal();
     }, targetTime * 1000);
     setTimeStart(true);
   }
@@ -19,13 +22,14 @@ export default function TimeStopper({ title, targetTime }) {
     setTimeStart(false);
   }
   //  đã dừng chưa + đã chơi chưa  + hết time chưa
-  const isWin = !timeStart && !timeExpired && hasStarted;
+  // const isWin = !timeStart && !timeExpired && hasStarted;
   return (
     <>
+      <ResultModel ref={dialog} timeTarget={targetTime} result="lose" />
       <section className="challenge">
         <h2>{title}</h2>
-        {timeExpired && <p>Bạn đã thua</p>}
-        {isWin && <p>Bạn đã thắng ở {timer.current}s</p>}
+        {/* {timeExpired && <p>Bạn đã thua</p>}
+        {isWin && <p>Bạn đã thắng ở {timer.current}s</p>} */}
 
         <p className="challenge-time">
           {targetTime} second{targetTime > 1 ? "s" : ""}
