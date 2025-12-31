@@ -4,41 +4,37 @@ import ResultModel from "../ResultModel/ResultModel.jsx";
 export default function TimeStopper({ title, targetTime }) {
   const timer = useRef();
   const dialog = useRef();
-  const [timeStart, setTimeStart] = useState(false);
-  const [timeExpired, setTimeExpired] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false); // kiểm tra đã bắt đầu
-  // chơi chưa
+  const [timerRemaining, setTimerRemaining] = useState(targetTime * 1000);
+  const timerActive = timerRemaining > 0 && timerRemaining < targetTime * 1000;
 
+  if (timerRemaining <= 0) {
+    clearInterval(timer.current);
+    dialog.current.open();
+  }
   function handleStart() {
-    setHasStarted(true); // đã bắt đầu chơi
-    timer.current = setTimeout(() => {
-      // setTimeExpired(true);
-      dialog.current.open();
-    }, targetTime * 1000);
-    setTimeStart(true);
+    timer.current = setInterval(() => {
+      setTimerRemaining((prevTime) => prevTime - 10);
+    }, 10);
   }
   function handleStop() {
-    clearTimeout(timer.current);
-    setTimeStart(false);
+    clearInterval(timer.current);
+    dialog.current.open();
   }
-  //  đã dừng chưa + đã chơi chưa  + hết time chưa
-  // const isWin = !timeStart && !timeExpired && hasStarted;
+
   return (
     <>
       <ResultModel ref={dialog} timeTarget={targetTime} result="lose" />
       <section className="challenge">
         <h2>{title}</h2>
-        {/* {timeExpired && <p>Bạn đã thua</p>}
-        {isWin && <p>Bạn đã thắng ở {timer.current}s</p>} */}
 
         <p className="challenge-time">
           {targetTime} second{targetTime > 1 ? "s" : ""}
         </p>
-        <button onClick={timeStart ? handleStop : handleStart}>
-          {timeStart ? "Stop" : "Start"}
+        <button onClick={timerActive ? handleStop : handleStart}>
+          {timerActive ? "Stop" : "Start"}
         </button>
-        <p className={timeStart ? "active" : undefined}>
-          {timeStart ? "Time is running" : "Timer inactive"}
+        <p className={timerActive ? "active" : undefined}>
+          {timerActive ? "Time is running" : "Timer inactive"}
         </p>
       </section>
     </>
