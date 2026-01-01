@@ -5,7 +5,7 @@ export default function TimeStopper({ title, targetTime }) {
   const timer = useRef();
   const dialog = useRef();
   const [timerRemaining, setTimerRemaining] = useState(targetTime * 1000);
-  const timerActive = timerRemaining > 0 && timerRemaining < targetTime * 1000;
+  const timerActive = timerRemaining > 0 && timerRemaining < targetTime * 1000; // đơn vị ms
 
   if (timerRemaining <= 0) {
     clearInterval(timer.current);
@@ -20,10 +20,17 @@ export default function TimeStopper({ title, targetTime }) {
     clearInterval(timer.current);
     dialog.current.open();
   }
-
+  function handleReset() {
+    setTimerRemaining(targetTime * 1000);
+  }
   return (
     <>
-      <ResultModel ref={dialog} timeTarget={targetTime} result="lose" />
+      <ResultModel
+        ref={dialog}
+        timeTarget={targetTime}
+        remainingTime={timerRemaining} // thời gian còn lại ms
+        onReset={handleReset}
+      />
       <section className="challenge">
         <h2>{title}</h2>
 
